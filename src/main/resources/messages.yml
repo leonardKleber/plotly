@@ -1,0 +1,28 @@
+prefix: "[PLOTLY]"
+
+colors:
+    primary: "DARK_AQUA"
+    secondary: "AQUA"
+
+messages:
+    general:
+        no-permission: "You do not have permission to use this command."
+        only-players: "Only players can use this command."
+
+    selector:
+        on-reciept: "You received a Selector Tool."
+        selection: "Selection %selection%: x=%x%, z=%z%"
+
+    founder:
+        usage: "Usage: /founder <list|add|remove>"
+        
+        list-usage: "Usage: /founder list"
+        list-header: "Founders:"
+        list-item: "- %founder%"
+        
+        add-usage: "Usage: /founder add <player>"
+        already-founder: "%founder% is already a Founder."
+        now-founder: "%founder% is now a Founder."
+
+        remove-usage: "Usage: /founder remove <player>"
+        no-founder: "%founder% is no longer a Founder."

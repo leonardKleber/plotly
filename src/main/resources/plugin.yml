@@ -1,0 +1,13 @@
+name: Plotly
+main: dev.leonardkleber.plotly.Plotly
+version: 1.0.0-SNAPSHOT
+author: leonardKleber
+
+commands:
+    selector:
+        description: Gives player a Selector Tool.
+        usage: /selector
+
+    founder:
+        description: Manage Plotly founders.
+        usage: /founder <list|add|remove>
