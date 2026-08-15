@@ -7,70 +7,72 @@ import dev.leonardkleber.plotly.files.FileManager;
 import dev.leonardkleber.plotly.models.Coordinates;
 
 public class PlotValidator {
-    private final FileManager fileManager;
+	private final FileManager fileManager;
 
-    public PlotValidator(FileManager fileManager) {
-        this.fileManager = fileManager;
-    }
+	public PlotValidator(FileManager fileManager) {
+		this.fileManager = fileManager;
+	}
 
-    public boolean isSelectionAlreadyClaimed(String world, Coordinates corner1, Coordinates corner2) {
-        FileConfiguration config = fileManager.get("plots.yml");
-    
-        ConfigurationSection plots = config.getConfigurationSection("main-plots");
+	public boolean isSelectionAlreadyClaimed(String world, Coordinates corner1, Coordinates corner2) {
+		FileConfiguration config = fileManager.get("plots.yml");
 
-        if (plots == null) return false;
+		ConfigurationSection plots = config.getConfigurationSection("main-plots");
 
-        for (String plotId : plots.getKeys(false)) {
-            String path = "main-plots." + plotId;
+		if (plots == null)
+			return false;
 
-            String plotWorld = config.getString(path + ".world");
+		for (String plotId : plots.getKeys(false)) {
+			String path = "main-plots." + plotId;
 
-            if (!world.equals(plotWorld)) continue;
+			String plotWorld = config.getString(path + ".world");
 
-            int plotMinX = Math.min(config.getInt(path + ".corner1.x"), config.getInt(path + ".corner2.x"));
-            int plotMaxX = Math.max(config.getInt(path + ".corner1.x"), config.getInt(path + ".corner2.x"));
+			if (!world.equals(plotWorld))
+				continue;
 
-            int plotMinZ = Math.min(config.getInt(path + ".corner1.z"), config.getInt(path + ".corner2.z"));
-            int plotMaxZ = Math.max(config.getInt(path + ".corner1.z"), config.getInt(path + ".corner2.z"));
+			int plotMinX = Math.min(config.getInt(path + ".corner1.x"), config.getInt(path + ".corner2.x"));
+			int plotMaxX = Math.max(config.getInt(path + ".corner1.x"), config.getInt(path + ".corner2.x"));
 
-            int selectionMinX = Math.min(corner1.getX(), corner2.getX());
-            int selectionMaxX = Math.max(corner1.getX(), corner2.getX());
+			int plotMinZ = Math.min(config.getInt(path + ".corner1.z"), config.getInt(path + ".corner2.z"));
+			int plotMaxZ = Math.max(config.getInt(path + ".corner1.z"), config.getInt(path + ".corner2.z"));
 
-            int selectionMinZ = Math.min(corner1.getZ(), corner2.getZ());
-            int selectionMaxZ = Math.max(corner1.getZ(), corner2.getZ());
+			int selectionMinX = Math.min(corner1.getX(), corner2.getX());
+			int selectionMaxX = Math.max(corner1.getX(), corner2.getX());
 
-            boolean overlaps =
-                selectionMinX <= plotMaxX &&
-                selectionMaxX >= plotMinX &&
-                selectionMinZ <= plotMaxZ &&
-                selectionMaxZ >= plotMinZ;
+			int selectionMinZ = Math.min(corner1.getZ(), corner2.getZ());
+			int selectionMaxZ = Math.max(corner1.getZ(), corner2.getZ());
 
-            if (overlaps) return true;
-        }
+			boolean overlaps = selectionMinX <= plotMaxX && selectionMaxX >= plotMinX && selectionMinZ <= plotMaxZ
+					&& selectionMaxZ >= plotMinZ;
 
-        return false;
-    }
+			if (overlaps)
+				return true;
+		}
 
-    public boolean doesFounderAlreadyHavePlot(String founder) {
-        FileConfiguration config = fileManager.get("plots.yml");
-        
-        ConfigurationSection plots = config.getConfigurationSection("main-plots");
+		return false;
+	}
 
-        if (plots == null) return false;
+	public boolean doesFounderAlreadyHavePlot(String founder) {
+		FileConfiguration config = fileManager.get("plots.yml");
 
-        for (String plotId : plots.getKeys(false)) {
-            String plotFounder = config.getString("main-plots." + plotId + ".founder");
-            if (founder.equals(plotFounder)) return true;
-        }
+		ConfigurationSection plots = config.getConfigurationSection("main-plots");
 
-        return false;
-    }
+		if (plots == null)
+			return false;
 
-    public boolean isSelectionAdjacentToFoundersPlot() {
-        return false;
-    }
+		for (String plotId : plots.getKeys(false)) {
+			String plotFounder = config.getString("main-plots." + plotId + ".founder");
+			if (founder.equals(plotFounder))
+				return true;
+		}
 
-    public boolean isNewPlotSizeWithinLimit() {
-        return false;
-    }
+		return false;
+	}
+
+	public boolean isSelectionAdjacentToFoundersPlot() {
+		return false;
+	}
+
+	public boolean isNewPlotSizeWithinLimit() {
+		return false;
+	}
 }
