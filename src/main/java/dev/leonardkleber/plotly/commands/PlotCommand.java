@@ -57,6 +57,10 @@ public class PlotCommand implements CommandExecutor {
 			messageManager.send(player, "plot.claim-success");
 		else if (response == 1)
 			messageManager.send(player, "plot.already-claimed");
+		else if (response == 2)
+			messageManager.send(player, "plot.too-large");
+		else if (response == 3)
+			messageManager.send(player, "plot.not-adjacent");
 
 		return true;
 	}

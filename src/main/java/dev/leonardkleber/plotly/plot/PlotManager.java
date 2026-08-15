@@ -20,8 +20,15 @@ public class PlotManager {
 	}
 
 	public int claimMainPlot(String founder, String world, Coordinates corner1, Coordinates corner2) {
-		if (plotValidator.isSelectionAlreadyClaimed(world, corner1, corner2)) {
+		if (plotValidator.isSelectionAlreadyClaimed(world, corner1, corner2))
 			return 1;
+
+		if (!plotValidator.isNewPlotSizeWithinLimit(founder, world, corner1, corner2))
+			return 2;
+
+		if (plotValidator.doesFounderAlreadyHavePlot(founder)) {
+			if (!plotValidator.isSelectionAdjacentToFoundersPlot(founder, world, corner1, corner2))
+				return 3;
 		}
 
 		UUID id = UUID.randomUUID();

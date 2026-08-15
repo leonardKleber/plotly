@@ -32,3 +32,5 @@ messages:
         no-selection: "You must select two corners first."
         claim-success: "Main Plot claimed successfully."
         already-claimed: "The selected area, or part of it, is already claimed."
+        not-adjacent: "Your new plot must be adjacent to one of your existing plots."
+        too-large: "The selected area exceeds your maximum plot size for this world."
