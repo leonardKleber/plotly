@@ -1,6 +1,6 @@
 name: Plotly
 main: dev.leonardkleber.plotly.Plotly
-version: 1.0.0-SNAPSHOT
+version: 1.0.0
 author: leonardKleber
 
 commands:
