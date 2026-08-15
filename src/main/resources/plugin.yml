@@ -11,3 +11,7 @@ commands:
     founder:
         description: Manage Plotly founders.
         usage: /founder <list|add|remove>
+
+    plot:
+        description: Manage plots.
+        usage: /plot claim

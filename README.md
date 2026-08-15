@@ -10,6 +10,7 @@ A Minecraft 1.2.5 CraftBukkit plugin for claiming, protecting, managing, and sel
 | `/founder list`            | Lists all Founders.                | :white_check_mark: | :white_check_mark:  | :x:                | :x:    |
 | `/founder add <player>`    | Makes a player a Founder.          | :white_check_mark: | :white_check_mark:  | :x:                | :x:    |
 | `/founder remove <player>` | Removes a player's Founder status. | :white_check_mark: | :white_check_mark:  | :x:                | :x:    |
+| `/plot claim`              | Claims a selected area.            | :x:                | :x:                 | :white_check_mark: | :x:    |
 
 ## Development
 

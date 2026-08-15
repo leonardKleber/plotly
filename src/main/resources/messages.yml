@@ -26,3 +26,9 @@ messages:
 
         remove-usage: "Usage: /founder remove <player>"
         no-founder: "%founder% is no longer a Founder."
+
+    plot:
+        claim-usage: "Usage: /plot claim"
+        no-selection: "You must select two corners first."
+        claim-success: "Main Plot claimed successfully."
+        already-claimed: "The selected area, or part of it, is already claimed."
