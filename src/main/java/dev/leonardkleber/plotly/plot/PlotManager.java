@@ -51,4 +51,8 @@ public class PlotManager {
 
 		return 0;
 	}
+
+	public boolean isLocationInOtherPlayersPlot(String player, String world, int x, int z) {
+		return plotValidator.isLocationInOtherPlayersPlot(player, world, x, z);
+	}
 }

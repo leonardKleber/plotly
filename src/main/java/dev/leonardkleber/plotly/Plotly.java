@@ -9,6 +9,7 @@ import dev.leonardkleber.plotly.commands.SelectorCommand;
 import dev.leonardkleber.plotly.files.FileManager;
 import dev.leonardkleber.plotly.founder.FounderManager;
 import dev.leonardkleber.plotly.listeners.PlayerListener;
+import dev.leonardkleber.plotly.listeners.PlotProtectionListener;
 import dev.leonardkleber.plotly.listeners.SelectionListener;
 import dev.leonardkleber.plotly.messages.MessageManager;
 import dev.leonardkleber.plotly.plot.PlotManager;
@@ -30,6 +31,7 @@ public class Plotly extends JavaPlugin {
 
 		getServer().getPluginManager().registerEvents(new SelectionListener(selectionManager, messageManager), this);
 		getServer().getPluginManager().registerEvents(new PlayerListener(selectionManager), this);
+		getServer().getPluginManager().registerEvents(new PlotProtectionListener(plotManager, messageManager), this);
 
 		getCommand("founder").setExecutor(new FounderCommand(founderManager, messageManager));
 		getCommand("selector").setExecutor(new SelectorCommand(founderManager, messageManager));

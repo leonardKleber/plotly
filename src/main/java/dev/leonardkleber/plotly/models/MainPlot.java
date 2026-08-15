@@ -22,8 +22,4 @@ public class MainPlot {
 		this.owners = new ArrayList<String>();
 		this.subPlots = new ArrayList<SubPlot>();
 	}
-
-	public String getWorld() {
-		return world;
-	}
 }

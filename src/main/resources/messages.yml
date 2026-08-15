@@ -34,3 +34,6 @@ messages:
         already-claimed: "The selected area, or part of it, is already claimed."
         not-adjacent: "Your new plot must be adjacent to one of your existing plots."
         too-large: "The selected area exceeds your maximum plot size for this world."
+        no-build-permission: "You do not have permission to build here."
+        no-interact-permission: "You do not have permission to interact with this."
+        no-container-permission: "You do not have permission to access this."

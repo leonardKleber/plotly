@@ -1,5 +1,7 @@
 package dev.leonardkleber.plotly.plot;
 
+import java.util.List;
+
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -149,5 +151,35 @@ public class PlotValidator {
 		}
 
 		return currentSize + size <= maxSize;
+	}
+
+	public boolean isLocationInOtherPlayersPlot(String player, String world, int x, int z) {
+		FileConfiguration plotsConfig = fileManager.get("plots.yml");
+    	ConfigurationSection plots = plotsConfig.getConfigurationSection("main-plots");
+
+		if (plots == null) return false;
+
+		for (String plotId : plots.getKeys(false)) {
+			String path = "main-plots." + plotId;
+
+			String plotWorld = plotsConfig.getString(path + ".world");
+
+			if (!world.equals(plotWorld)) continue;
+
+			String founder = plotsConfig.getString(path + ".founder");
+			List<String> owners = plotsConfig.getStringList(path + ".owners");
+
+			if (player.equals(founder) || owners.contains(player)) continue;
+
+			int minX = Math.min(plotsConfig.getInt(path + ".corner1.x"), plotsConfig.getInt(path + ".corner2.x"));
+			int maxX = Math.max(plotsConfig.getInt(path + ".corner1.x"), plotsConfig.getInt(path + ".corner2.x"));
+
+			int minZ = Math.min(plotsConfig.getInt(path + ".corner1.z"), plotsConfig.getInt(path + ".corner2.z"));
+			int maxZ = Math.max(plotsConfig.getInt(path + ".corner1.z"), plotsConfig.getInt(path + ".corner2.z"));
+
+			if (x >= minX && x <= maxX && z >= minZ && z <= maxZ) return true;
+		}
+
+		return false;
 	}
 }
